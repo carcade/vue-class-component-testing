@@ -31,11 +31,13 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'ObjectJobCard',
-    props: {
-        jobs: Array,
-    }
+<script lang="ts">
+import { Prop, Vue } from "vue-property-decorator";
+import Job from "src/models/Job";
+
+export default class ObjectJobCard extends Vue {
+    @Prop()
+    jobs!: Job[];
 }
+
 </script>

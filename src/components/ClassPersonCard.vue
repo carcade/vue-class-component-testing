@@ -15,13 +15,11 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import { Vue, Prop, Options } from 'vue-property-decorator';
 import Person from 'src/models/Person';
 import ObjectJobCard from 'src/components/ObjectJobCard.vue';
 
-@Component({
-    components: {ObjectJobCard}
-})
+@Options({components: {ObjectJobCard}})
 export default class ClassPersonCard extends Vue {
     @Prop()
     public title!: string;
