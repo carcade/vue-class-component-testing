@@ -1,32 +1,26 @@
 <template>
-    <div class="w-full min-h-screen flex items-stretch md:items-center justify-center">
-        <class-person-card
-            :title="title"
-            :person="person"
-        />
-
+    <div>
+        <div class="w-full min-h-screen flex items-stretch md:items-center justify-center">
+            <div class="w-1/2 flex flex-col">
+                <div class="w-full flex justify-center mb-3" style="height: 50px;">
+                    <router-link to="/" class="p-3 border border-gray-800 rounded block mr-3">Главная</router-link>
+                    <router-link to="/about" class="p-3 border border-gray-800 rounded block">О сайте</router-link>
+                </div>
+                <div class="flex w-full justify-center">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import ClassPersonCard from 'src/components/ClassPersonCard.vue';
-import Person from 'src/models/Person';
-import Job from 'src/models/Job';
-import { Vue, Options, Provide } from "vue-property-decorator";
+import {Options, Vue} from "vue-property-decorator";
 
 @Options({name: 'App', components: {ClassPersonCard}})
 export default class App extends Vue {
-    @Provide() title = 'Карточка контакта';
-    @Provide() person!: Person;
 
-    created() {
-        const jobs: Job[] = [];
-        jobs.push(new Job('Газпром', '01.01.2010', '01.02.2013'));
-        jobs.push(new Job('Роснефть', '01.03.2013', '10.02.2015'));
-        jobs.push(new Job('Татнефть', '11.02.2015', '11.02.2020'));
-
-        this.person = new Person('Иван', 'Иванов', 20, jobs);
-    }
 }
 </script>
 
